@@ -1,4 +1,4 @@
-function toReadable (number) {
+module.exports = function toReadable (number) {
     if (number == 0)
         return 'zero'
     let numberString = String(number);
@@ -56,5 +56,3 @@ function toReadable (number) {
     result += static.get(numberString[numberString.length - 1]);
     return result;
 }
-
-console.log(toReadable(89))
