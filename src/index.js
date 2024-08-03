@@ -1,4 +1,4 @@
-module.exports = function toReadable (number) {
+function toReadable (number) {
     if (number == 0)
         return 'zero'
     let numberString = String(number);
@@ -29,33 +29,32 @@ module.exports = function toReadable (number) {
     var tens = 0;
     var result = "";
     if (number <= 20) {
-        console.log("static " + static.get(numberString));
-        return static.get(number);
+        return static.get(String(number));
     }
     if (numberString.length == 3) {
         result += static.get(numberString[0]);
         result += " hundred ";
     }
-    if (numberString.length > 1) {
+    if (numberString.length > 1 ) {
+        var temp = numberString.length == 2 ? numberString[0] : numberString[1]
         if (numberString[1] == '1') {
             result += static.get(numberString[1] + numberString[2]);
-            console.log(result);
             return result;
-        } else if (numberString[1] == '2'){
-            console.log('here1');
+        } else if (temp == '2'){
             result += 'twen';
-        } else if (numberString[1] == '3'){
-            console.log('here1');
+        } else if (temp == '3'){
             result += 'thir';
-        } else if (numberString[1] == '5'){
-            console.log('here1');
+        } else if (temp == '5'){
             result += 'fif';
+        }else if (temp == '8'){
+            result += 'eigh';
         } else {
-            console.log('here');
-            result += static.get(numberString[1]);
+            result += static.get(temp);
         }
         result += "ty ";
     }
     result += static.get(numberString[numberString.length - 1]);
     return result;
 }
+
+console.log(toReadable(89))
